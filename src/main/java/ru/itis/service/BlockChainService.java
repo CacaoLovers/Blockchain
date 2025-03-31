@@ -1,8 +1,8 @@
 package ru.itis.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Service;
 import ru.itis.models.Block;
 import ru.itis.models.BlockChain;
@@ -57,6 +57,7 @@ public class BlockChainService {
             return Optional.of(blockChain);
         } catch (IOException e) {
             log.error("Не удалось загрузить блокчейн с таким индентификатором.");
+            log.error(e.getMessage());
             return Optional.empty();
         }
     }

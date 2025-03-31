@@ -38,11 +38,11 @@ public class BlockChainUI {
                 System.out.println("Введите индентификатор блокчейна:");
                 String blockChainName = scanner.next();
                 Optional<BlockChain> blockChain = blockChainService.loadBlockChain(blockChainName);
-
+                System.out.println("Введите данные 1 и данные 2:");
                 blockChain.ifPresent((bc) -> {
                     BlockDto blockDto = BlockDto.builder()
-                            .data1("dc")
-                            .data2("fd")
+                            .data1(scanner.next())
+                            .data2(scanner.next())
                             .build();
                     Block block = blockService.createBlock(blockDto);
                     blockChainService.addBlock(bc, block);

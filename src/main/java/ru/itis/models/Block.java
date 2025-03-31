@@ -1,28 +1,28 @@
 package ru.itis.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.ext.JodaDeserializers;
-import org.codehaus.jackson.map.ext.JodaSerializers;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Block {
     private Long id;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    private LocalDateTime timestamp;
     private byte[] previousHash;
     private String data1;
     private String data2;
     private byte[] dataSignature;
     private byte[] blockSignature;
-    @JsonFormat(pattern = "yy")
-    private LocalDateTime timestamp;
 
     @Override
     public String toString() {
